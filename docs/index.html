@@ -33,13 +33,12 @@ import { OrbitControls } from "./OrbitControls.js";
 
 
 
-
 //begin import
 var loader = new OBJLoader();
 // load a resource
 loader.load(
 	// resource URL
-	'emerald.obj',
+	'MONKEY.obj',
 	// called when resource is loaded
 	function ( object ) {
 		scene.add( object );
@@ -64,7 +63,7 @@ var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
 
 var controls = new OrbitControls( camera, renderer.domElement );
 
-      var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+      var geometry = new THREE.TorusGeometry( 3, 0.5, 16, 100 );
       var material = new THREE.MeshBasicMaterial({ color: 0xffff0 });
       var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
@@ -83,7 +82,9 @@ var controls = new OrbitControls( camera, renderer.domElement );
       scene.add( light2 );
 
 
-      camera.position.z = 50;
+      camera.position.z = 3;
+      camera.position.y = -2;
+      camera.position.x = 3;
       controls.update();
 //centrar al modificar el tamaño.
 window.addEventListener( 'resize', onWindowResize, false );
@@ -105,13 +106,16 @@ function onWindowResize(){
        // object.rotation.x += 0.01;
   
 
-        controls.update();
         
         renderer.render(scene, camera);
       };
 
       animate();
     </script>
+
+
+<h1>Title</h1>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus est, delectus molestias quaerat autem et consectetur commodi id odit eum ab sapiente atque fuga veniam corporis error debitis at facilis.
 
    
   </body>
