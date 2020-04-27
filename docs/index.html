@@ -3,7 +3,7 @@
     <title>My first three.js app</title>
     <style>
       body {
-        margin: 50px;
+        margin: 0px;
       }
       canvas {
         display: block;
@@ -11,9 +11,18 @@
     </style>
   </head>
   <body>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script src="./jsm/loaders/OBJLoader.js"></script>
-    <script>
+    
+
+
+
+    <script type="module">
+            import * as THREE from "./three.module.js";
+            import { OBJLoader } from './OBJLoader.js';
+import { OrbitControls } from "./OrbitControls.js";
+
+      
+
+
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(
         75,
@@ -22,23 +31,82 @@
         1000
       );
 
-      var renderer = new THREE.WebGLRenderer();
+
+
+
+//begin import
+var loader = new OBJLoader();
+// load a resource
+loader.load(
+	// resource URL
+	'emerald.obj',
+	// called when resource is loaded
+	function ( object ) {
+		scene.add( object );
+	},
+	// called when loading is in progresses
+	function ( xhr ) {
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	},
+	// called when loading has errors
+	function ( error ) {
+		console.log( 'An error happened' );
+	}
+);
+//
+  
+
+
+var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      var geometry = new THREE.BoxGeometry();
-      var material = new THREE.MeshBasicMaterial({ color: 0x10ff0 });
+
+var controls = new OrbitControls( camera, renderer.domElement );
+
+      var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+      var material = new THREE.MeshBasicMaterial({ color: 0xffff0 });
       var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
 
-      camera.position.z = 5;
+      //LUCES
+      var light = new THREE.PointLight( 0xff0000, 1, 1000 );
+      light.position.set( -50, 50, 50 );
+      scene.add( light );
 
+      var light1 = new THREE.PointLight( 0xff0000, 1, 1000 );
+      light1.position.set( 50, 5, 50 );
+      scene.add( light1 );
+
+      var light2 = new THREE.PointLight( 0xff0000, 1, 1000 );
+      light1.position.set( 50, -50, -50 );
+      scene.add( light2 );
+
+
+      camera.position.z = 50;
+      controls.update();
+//centrar al modificar el tamaño.
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+//
       var animate = function () {
         requestAnimationFrame(animate);
-
+        
         cube.rotation.x += 0.01;
         cube.rotation.y += 0.01;
+       // object.rotation.x += 0.01;
+  
 
+        controls.update();
+        
         renderer.render(scene, camera);
       };
 
