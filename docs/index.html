@@ -63,7 +63,7 @@ var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
 
 var controls = new OrbitControls( camera, renderer.domElement );
 
-      var geometry = new THREE.TorusGeometry( 3, 0.5, 16, 100 );
+      var geometry = new THREE.TorusGeometry( 1.8, 0.2, 16, 100 );
       var material = new THREE.MeshBasicMaterial({ color: 0xffff0 });
       var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
@@ -82,9 +82,9 @@ var controls = new OrbitControls( camera, renderer.domElement );
       scene.add( light2 );
 
 
-      camera.position.z = 3;
-      camera.position.y = -2;
-      camera.position.x = 3;
+      camera.position.z = 2;
+      camera.position.y = -1;
+      camera.position.x = -2;
       controls.update();
 //centrar al modificar el tamaño.
 window.addEventListener( 'resize', onWindowResize, false );
