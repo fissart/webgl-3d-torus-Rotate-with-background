@@ -42,7 +42,7 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 
   
 //
-var ship_material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF } );
+var ship_material = new THREE.MeshPhongMaterial({shading: THREE.SmoothShading, blending:     THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
 var loaderw = new OBJLoader();
 loaderw.load( 'MONKEY.obj',
     function( obj ){
