@@ -3,13 +3,14 @@
     <title>My first three.js app</title>
     <style>
       body {
-        margin: 10px;
+        margin: 0px;
       }
       canvas {
         display: block;
       }
       div{
-        width: 90%;
+        width: 90%
+        ;
       }
     </style>
   </head>
@@ -19,9 +20,10 @@
 <div id="77"></div>
 
     <script type="module">
-            import * as THREE from "./three.module.js";
+     
             import { OBJLoader } from './OBJLoader.js';
 import { OrbitControls } from "./OrbitControls.js";
+import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/build/three.module.js';
 
       
 
@@ -62,7 +64,7 @@ loader.load(
 var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
       //document.body.appendChild(renderer.domElement);
-      document.getElementById('77').appendChild( renderer.domElement );
+ var canvas= document.getElementById('77').appendChild( renderer.domElement );
 
 var controls = new OrbitControls( camera, renderer.domElement );
 
@@ -89,18 +91,20 @@ var controls = new OrbitControls( camera, renderer.domElement );
       camera.position.y = -1;
       camera.position.x = -2;
 
+      var loader = new THREE.TextureLoader();
+  var bgTexture = loader.load('https://threejsfundamentals.org/threejs/resources/images/daikanyama.jpg');
+  scene.background = bgTexture;
+
+
       controls.update();
       
 //centrar al modificar el tamaño.
 window.addEventListener( 'resize', onWindowResize, false );
 
 function onWindowResize(){
-
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-
     renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
 //
       var animate = function () {
@@ -110,7 +114,19 @@ function onWindowResize(){
         cube.rotation.y += 0.01;
        // object.rotation.x += 0.01;
   
-
+//ajustar adecuadamente la imagen del fondo
+  // Set the repeat and offset properties of the background texture
+  // to keep the image's aspect correct.
+  // Note the image may not have loaded yet.
+  const canvasAspect = canvas.clientWidth / canvas.clientHeight;
+  const imageAspect = bgTexture.image ? bgTexture.image.width / bgTexture.image.height : 1;
+  const aspect = imageAspect / canvasAspect;
+ 
+  bgTexture.offset.x = aspect > 1 ? (1 - 1 / aspect) / 2 : 0;
+  bgTexture.repeat.x = aspect > 1 ? 1 / aspect : 1;
+ 
+  bgTexture.offset.y = aspect > 1 ? 0 : (1 - aspect) / 2;
+  bgTexture.repeat.y = aspect > 1 ? 1 : aspect;
         
         renderer.render(scene, camera);
       };
