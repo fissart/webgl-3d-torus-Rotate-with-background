@@ -18,7 +18,7 @@
     
 
 <div id="77"></div>
-
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
     <script type="module">
      
             import { OBJLoader } from './OBJLoader.js';
@@ -38,17 +38,18 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 
 
 
-//begin import
 
   
 //
-var ship_material = new THREE.MeshPhongMaterial({shading: THREE.SmoothShading, blending:     THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
+var textureLoader = new THREE.TextureLoader();
+var map = textureLoader.load('./wr.png');
+var ship_materialW = new THREE.MeshPhongMaterial({map: map});
 var loaderw = new OBJLoader();
 loaderw.load( 'MONKEY.obj',
-    function( obj ){
+    function( obj ){  
         obj.traverse( function( child ) {
             if ( child instanceof THREE.Mesh ) {
-                child.material = ship_material;
+                child.material = ship_materialW;
             }
         } );
         scene.add( obj );
