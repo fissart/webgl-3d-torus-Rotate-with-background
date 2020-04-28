@@ -3,17 +3,20 @@
     <title>My first three.js app</title>
     <style>
       body {
-        margin: 0px;
+        margin: 10px;
       }
       canvas {
         display: block;
+      }
+      div{
+        width: 90%;
       }
     </style>
   </head>
   <body>
     
 
-
+<div id="77"></div>
 
     <script type="module">
             import * as THREE from "./three.module.js";
@@ -58,8 +61,8 @@ loader.load(
 
 var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
+      //document.body.appendChild(renderer.domElement);
+      document.getElementById('77').appendChild( renderer.domElement );
 
 var controls = new OrbitControls( camera, renderer.domElement );
 
