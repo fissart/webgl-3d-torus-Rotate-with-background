@@ -39,26 +39,28 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 
 
 //begin import
-var loader = new OBJLoader();
-// load a resource
-loader.load(
-	// resource URL
-	'MONKEY.obj',
-	// called when resource is loaded
-	function ( object ) {
-		scene.add( object );
-	},
-	// called when loading is in progresses
-	function ( xhr ) {
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-	},
-	// called when loading has errors
-	function ( error ) {
-		console.log( 'An error happened' );
-	}
+
+  
+//
+var ship_material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF } );
+var loaderw = new OBJLoader();
+loaderw.load( 'MONKEY.obj',
+    function( obj ){
+        obj.traverse( function( child ) {
+            if ( child instanceof THREE.Mesh ) {
+                child.material = ship_material;
+            }
+        } );
+        scene.add( obj );
+    },
+    function( xhr ){
+        console.log( (xhr.loaded / xhr.total * 100) + "% loaded")
+    },
+    function( err ){
+        console.error( "Error loading 'ship.obj'")
+    }
 );
 //
-  
 
 
 var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
