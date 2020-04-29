@@ -114,7 +114,7 @@
 
     var textur = new THREE.TextureLoader().load('ff.jpg');
     var geometry = new THREE.TorusGeometry(5, 0.5, 16, 100);
-    var material = new THREE.MeshPhongMaterial({ map: textur, transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
+    var material = new THREE.MeshPhongMaterial({ map: texture, transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
