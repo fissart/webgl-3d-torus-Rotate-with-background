@@ -23,8 +23,9 @@
      
             import { OBJLoader } from './OBJLoader.js';
 import { OrbitControls } from "./OrbitControls.js";
-import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/build/three.module.js';
-
+import { GLTFLoader } from "./GLTFLoader.js";
+import * as THREE from './three.module.js';
+import { SimplifyModifier } from "./jsm/modifiers/SimplifyModifier.js";
       
 
 
@@ -39,10 +40,36 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 
 
 
-  
+  //
+  new GLTFLoader().load("objet/scene.gltf", function (gltf) {
+          var mesh = gltf.scene.children[0];
+          mesh.position.x = -5;
+          mesh.scale.x=0.1
+          mesh.scale.y=0.1
+          mesh.scale.z=0.1
+          mesh.rotation.z = Math.PI / 2;
+          scene.add(mesh);
+
+          var modifier = new SimplifyModifier();
+
+          var simplified = mesh.clone();
+          //simplified.material = simplified.material.clone();
+          //simplified.material.flatShading = true;
+          //var count = Math.floor(
+          //  simplified.geometry.attributes.position.count * 0.875
+          //); // number of vertices to remove
+          //simplified.geometry = modifier.modify(simplified.geometry, count);
+
+          //simplified.position.x = 3;
+          //simplified.rotation.y = -Math.PI / 2;
+          scene.add(simplified);
+
+          //render();
+        });
+
 //
 var textureLoader = new THREE.TextureLoader();
-var map = textureLoader.load('./wr.png');
+var map = textureLoader.load('./ww.jpeg');
 var ship_materialW = new THREE.MeshPhongMaterial({map: map});
 var loaderw = new OBJLoader();
 loaderw.load( 'MONKEY.obj',
@@ -55,7 +82,7 @@ loaderw.load( 'MONKEY.obj',
         scene.add( obj );
     },
     function( xhr ){
-        console.log( (xhr.loaded / xhr.total * 100) + "% loaded")
+        console.log( (xhr.loaded / xhr.total * 1000) + "% loaded")
     },
     function( err ){
         console.error( "Error loading 'ship.obj'")
@@ -67,18 +94,21 @@ loaderw.load( 'MONKEY.obj',
 var renderer =new THREE.WebGLRenderer( { antialias: true, autoSize: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
       //document.body.appendChild(renderer.domElement);
- var canvas= document.getElementById('77').appendChild( renderer.domElement );
+      renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 0.5;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+      var canvas= document.getElementById('77').appendChild( renderer.domElement );
 
 var controls = new OrbitControls( camera, renderer.domElement );
 
-      var geometry = new THREE.TorusGeometry( 1.8, 0.2, 16, 100 );
-      var material = new THREE.MeshPhongMaterial({shading: THREE.SmoothShading, blending:     THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
+      var geometry = new THREE.TorusGeometry( 2, 0.5, 16, 100 );
+      var material = new THREE.MeshPhongMaterial({color: 0xF00FFF})//{shading: THREE.SmoothShading, blending:     THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
       var cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
 
       //LUCES
-  
-
 
       {
     const color = 0xFFFFFF;
@@ -96,9 +126,8 @@ var controls = new OrbitControls( camera, renderer.domElement );
     scene.add(light);
   }
 
-
-      camera.position.z = 2;
-      camera.position.y = -1;
+      camera.position.z = 6;
+      camera.position.y = -5;
       camera.position.x = -2;
 
   {
