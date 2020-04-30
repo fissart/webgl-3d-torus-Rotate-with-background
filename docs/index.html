@@ -15,10 +15,47 @@
       width: 90%;
     }
   </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+  <script>
+    window.WebFontConfig = {
+      custom: {
+        families: ['KaTeX_AMS', 'KaTeX_Caligraphic:n4,n7', 'KaTeX_Fraktur:n4,n7',
+          'KaTeX_Main:n4,n7,i4,i7', 'KaTeX_Math:i4,i7', 'KaTeX_Script',
+          'KaTeX_SansSerif:n4,n7,i4', 'KaTeX_Size1', 'KaTeX_Size2', 'KaTeX_Size3',
+          'KaTeX_Size4', 'KaTeX_Typewriter'],
+      },
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js"
+    integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate placeat amet ratione exercitationem necessitatibus
+  ex eius? Nihil tenetur aut illo saepe, error nesciunt ipsam obcaecati eos dolorum nam quos dicta!
+
+  \def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+  a & b & c \\ \hline
+  d & e & f \\
+  \hdashline
+  g & h & i
+  \end{array}
 
   <div id="77"></div>
   <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
@@ -46,7 +83,7 @@
     //
     new GLTFLoader().load("objet/scene.gltf", function (gltf) {
       var mesh = gltf.scene.children[0];
-      mesh.position.x = -5;
+      mesh.position.x = -7;
       mesh.scale.x = 0.1
       mesh.scale.y = 0.1
       mesh.scale.z = 0.1
@@ -70,11 +107,11 @@
       //render();
     });
 
-    var texture = new THREE.TextureLoader().load('77.jpg');
+    var texture = new THREE.TextureLoader().load('ff.jpg');
     // var material = new THREE.MeshBasicMaterial({ map: texture });
     //
     // var map = new THREE.MeshPhongMaterial({ color: 0xF00FFF });
-    var ship_materialW = new THREE.MeshPhongMaterial({ map: texture, transparent: true, shading: THREE.SmoothShading });
+    var ship_materialW = new THREE.MeshPhongMaterial({ color: "red", transparent: true, shading: THREE.SmoothShading });
     var loaderw = new OBJLoader();
     loaderw.load('MONKEY.obj',
       function (obj) {
@@ -114,7 +151,7 @@
 
     var textur = new THREE.TextureLoader().load('ff.jpg');
     var geometry = new THREE.TorusGeometry(5, 0.5, 16, 100);
-    var material = new THREE.MeshPhongMaterial({ map: texture, transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
+    var material = new THREE.MeshPhongMaterial({ color: "green", transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
@@ -136,9 +173,9 @@
       scene.add(light);
     }
 
-    camera.position.z = 6;
-    camera.position.y = -5;
-    camera.position.x = -2;
+    camera.position.z = 8;
+    camera.position.y = 2;
+    camera.position.x = -5;
 
     {
       const loader = new THREE.CubeTextureLoader();

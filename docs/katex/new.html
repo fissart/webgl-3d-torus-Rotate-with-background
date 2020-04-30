@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--To run this example from a clone of the repository, run `yarn start`
+    in the root KaTeX directory and then visit with your web browser:
+    http://localhost:7936/contrib/auto-render/index.html
+  -->
+<html>
+
+<head>
+  <link rel="stylesheet" href="katex.min.css">
+  <script defer src="katex.min.js"></script>
+  <script defer src="auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ]
+      });
+    });
+  </script>
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      var src = "true";
+      if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+      if (location.protocol !== "file:")
+        if (/^https?:/.test(src))
+          src = src.replace(/^https?:/, '');
+      script.src = src;
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-size: 14px;
+    }
+
+    #test>.blue {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="test">
+    This is some text $\frac{1}{2}$ other text
+    <span class="blue">
+      Other node \[ \frac{1}{2} \] Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
+      nulla blanditiis amet adipisci sapiente eum dolorem vero ut debitis? Quo blanditiis ullam nisi mollitia aspernatur
+      modi repellat ipsam natus consectetur. $$ \int_2^3 $$
+    </span>
+    and some
+    $\epsilon$
+    <pre>
+        Stuff in a $pre tag \rho$
+      </pre>
+  </div>
+
+  \[
+  \begin{alinged}
+  a &= b + c \\
+  &= e + f \\
+  \end{aligned}
+  \]
+  Sea $(X,Y)$ una variable bidimensinal discreta con rango $R_{X\times Y}$. A cada posible resultado le asociamos un
+  numero $$p(x,y)=P[X=x, Y=y]$$ que cumple la siguientes condiciones
+
+  1. $1>p(x,y)>0$, $(x,y)\in R_{X\times Y}\in$
+  2. $\sum^{}_{x\in R_X} \sum^{}_{y\in R_Y}p(x,y)=1$
+
+  Alos pares ordenados $\left((x,y),p(x,y)\right)$ se le llama **distribución de probabilidad conjunta**
+
+
+  Sea $(X,Y)$ una variable bidimensinal discreta con rango $R_{X\times Y}$. A cada posible resultado le asociamos un
+  numero $$p(x,y)=P[X=x, Y=y]$$ que cumple la siguientes condiciones
+
+  1. $1>p(x,y)>0$, $(x,y)\in R_{X\times Y}\in$
+  2. $\sum^{}_{x\in R_X} \sum^{}_{y\in R_Y}p(x,y)=1$
+
+  Alos pares ordenados $\left((x,y),p(x,y)\right)$ se le llama **distribución de probabilidad conjunta**
+
+
+
+  La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]
+
+  La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]La variable aleatoria discreta
+  \[p_X(x)=p(1-p), \text{ $x\in \mathbb{Z}^+$ y $p\in[0,1]$}\]
+
+  en efecto \[p(1-p)^{i-1}>0, \text{ $\forall x\in \mathbb{Z}^+$}\] además \[ \sum^{\infty}_{i=1}p(1-p)^{i-1}=p
+  \lim_{n\to\infty}\frac{1-(1-p)^{n+1}}{1-(1-p)}=1\]
+
+</body>
+
+</html>
