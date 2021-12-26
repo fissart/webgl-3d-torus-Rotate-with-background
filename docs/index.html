@@ -36,16 +36,7 @@
 
 <body>
 
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate placeat amet ratione exercitationem necessitatibus
-  ex eius? Nihil tenetur aut illo saepe, error nesciunt ipsam obcaecati eos dolorum nam quos dicta!
-
-  \def\arraystretch{1.5}
-  \begin{array}{c:c:c}
-  a & b & c \\ \hline
-  d & e & f \\
-  \hdashline
-  g & h & i
-  \end{array}
+ 
 
   <div id="77"></div>
   <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
@@ -148,7 +139,7 @@
 
     var textur = new THREE.TextureLoader().load('ff.jpg');
     var geometry = new THREE.TorusGeometry(7, 0.5, 16, 100);
-    var material = new THREE.MeshPhongMaterial({ color: "green", transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
+    var material = new THREE.MeshPhongMaterial({ antialias: true, autoSize: true });//({ color: "green", transparent: true, shading: THREE.SmoothShading })//{shading: THREE.SmoothShading, blending: THREE.AdditiveBlending, transparent: true, color: 0xaa8844, ambient: 0x000000, specular:     0xffffff, shininess: 1, vertexColors: false  });
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
@@ -235,12 +226,6 @@
 
     animate();
   </script>
-
-
-  <h1>Title</h1>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus est, delectus molestias quaerat autem et consectetur
-  commodi id odit eum ab sapiente atque fuga veniam corporis error debitis at facilis.
-
 
 </body>
 
